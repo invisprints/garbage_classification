@@ -1,0 +1,45 @@
+{
+    "model_algorithm": "image_classification",
+    "model_type": "PyTorch",
+    "runtime": "python3.6",
+    "apis": [
+        {
+            "procotol": "http",
+            "url": "/",
+            "method": "post",
+            "request": {
+                "Content-type": "multipart/form-data",
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "input_img": {"type": "file"}
+                    },
+                    "required": ["input_img"]
+                }
+            },
+            "response": {
+                "Content-type": "multipart/form-data",
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "result": {"type": "string"}
+                    },
+                    "required": ["result"]
+                }
+            }
+        }
+    ],
+    "dependencies": [
+        {
+            "installer": "pip",
+            "packages": [
+                {
+                    "package_name": "fastai"
+                },
+                {
+                    "package_name": "pytorchcv"
+                }
+            ]
+        }
+    ]
+}
